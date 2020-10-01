@@ -84,7 +84,7 @@ class Chat extends React.Component{
     async get_last_pedido(contact){
         try{
             const response = await fetch(
-              `http://127.0.0.1:8000/code/?code=4&contact=${contact}&cellphone=${this.state.cellphone}`
+              `http://167.71.145.103/code/?code=4&contact=${contact}&cellphone=${this.state.cellphone}`
             );
             const data = await response.json();
             this.setState({
@@ -97,7 +97,7 @@ class Chat extends React.Component{
     async get_Qr(){
         try{
             const response = await fetch(
-            `http://127.0.0.1:8000/code/?code=0&cellphone=${this.state.cellphone}`
+            `http://167.71.145.103/code/?code=0&cellphone=${this.state.cellphone}`
             );
             const data = await response.json();
             if (data.state){
@@ -115,7 +115,7 @@ class Chat extends React.Component{
     async login(){
         try{
             const response = await fetch(
-            `http://127.0.0.1:8000/code/?code=6&cellphone=${this.state.cellphone}`
+            `http://167.71.145.103/code/?code=6&cellphone=${this.state.cellphone}`
             );
             const data = await response.json();
             if (data.state){
@@ -133,7 +133,7 @@ class Chat extends React.Component{
         else{
             try{
                 const response = await fetch(
-                `http://127.0.0.1:8000/code/?code=1&cellphone=${this.state.cellphone}&contact=${contact}`
+                `http://167.71.145.103/code/?code=1&cellphone=${this.state.cellphone}&contact=${contact}`
                 );
                 const data = await response.json();
                 this.setState({
@@ -157,7 +157,7 @@ class Chat extends React.Component{
         else{
             try{
                 const response = await fetch(
-                `http://127.0.0.1:8000/code/?code=3&cellphone=${this.state.cellphone}`
+                `http://167.71.145.103/code/?code=3&cellphone=${this.state.cellphone}`
                 );
                 const data = await response.json();
                 this.setState({
@@ -181,7 +181,7 @@ class Chat extends React.Component{
     async send_message(){
         try{
             const response = await fetch(
-              `http://127.0.0.1:8000/code/?code=1`,
+              `http://167.71.145.103/code/?code=1`,
               {
                   method: 'POST',
                   body: JSON.stringify({cellphone:this.state.cellphone, contact:this.state.contact, message:this.state.message})
@@ -221,7 +221,7 @@ class Chat extends React.Component{
     async send_delivery(){
         try{
             const response = await fetch(
-              `http://127.0.0.1:8000/code/?code=3`,
+              `http://167.71.145.103/code/?code=3`,
               {
                   method: 'POST',
                   body: JSON.stringify({form:this.state.form, cellphone:this.state.cellphone})

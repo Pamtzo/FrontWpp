@@ -51,7 +51,7 @@ class Pedido extends React.Component{
     async sell(key, name){
         try{
             const response = await fetch(
-              `http://127.0.0.1:8000/code/?code=2`,
+              `http://167.71.145.103/code/?code=2`,
               {
                   method: 'POST',
                   body: JSON.stringify({pk:key, contact:name, cellphone:this.state.cellphone})
@@ -67,7 +67,7 @@ class Pedido extends React.Component{
     async login(){
         try{
             const response = await fetch(
-              `http://127.0.0.1:8000/code/?code=5&user=${this.state.user}&password=${this.state.password}`
+              `http://167.71.145.103/code/?code=5&user=${this.state.user}&password=${this.state.password}`
             );
             const data = await response.json();
             if (data.state){
@@ -99,7 +99,7 @@ class Pedido extends React.Component{
         if (!this.state.block){
             try{
                 const response = await fetch(
-                `http://127.0.0.1:8000/code/?code=2&sucursal=${this.state.sucursal}&cellphone=${this.state.cellphone}`
+                `http://167.71.145.103/code/?code=2&sucursal=${this.state.sucursal}&cellphone=${this.state.cellphone}`
                 );
                 const data = await response.json();
                 this.setState({
