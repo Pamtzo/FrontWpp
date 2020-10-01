@@ -84,7 +84,8 @@ class Pedido extends React.Component{
             }
           } catch (error){
             this.setState({
-                block: false
+                block: false,
+                pedidos:[{id:1, name:'Andres Ospina', direction:'Cra 6A#41a-33', cellphone:'+57 310 3589575', delivery:'Combo #5 X3', value:50000}]
             });
           }
     }
@@ -95,8 +96,8 @@ class Pedido extends React.Component{
             user:'',
             password:'',
             cellphone:'',
-            sucursal: '',
-            pedidos:[]
+            sucursal: ''/*,
+            pedidos:[]*/
         })
     }
 
@@ -133,10 +134,10 @@ class Pedido extends React.Component{
                 {this.state.block &&
                 <div className="delivery">
                     <div className="Header2">
-                        <img src={logo2} alt="Logo" className="Logo"/>
+                        <img src={logo2} alt="Logo2" className="Logo"/>
                     </div>
                     <div className="Row">
-                        <img src={logimg} alt="Logo" className="Logimg"/>
+                        <img src={logimg} alt="Logo2" className="Logimg"/>
                         <div className="LogForm">
                             <div className="Tittle1">¡Bienvenido!<br/></div>
                             <div className="Sub1">Inicia sesión para empezar a recibir pedidos</div>
@@ -156,7 +157,7 @@ class Pedido extends React.Component{
                 {!this.state.block &&
                 <div className="delivery">
                     <div className="Header">
-                        <img src={logo} alt="Logo1" className="Logo Centericon"/>
+                        <img src={logo} alt="Logo1" className="Logo2 Centericon"/>
                         <div className="LogOut" onClick={this.logout}>Cerrar sesión</div>
                     </div>
                     <div className="Tittle1">Pedidos entrantes<br/></div>
