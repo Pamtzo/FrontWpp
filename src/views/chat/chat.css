@@ -58,6 +58,10 @@
   color: gray;
 }
 
+.full{
+  width: 100%;
+}
+
 ul {
   align-items: initial;
   list-style-type: none;

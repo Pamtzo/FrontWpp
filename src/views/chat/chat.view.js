@@ -69,16 +69,16 @@ class Chat extends React.Component{
         block: true,
         cellphone:'',
         Qr: '',
-        contact: '',
+        contact: 'andres',
         message: '',
-        contacts:[{id:1, name:"andres"},{id:2, name:"Diego"},{id:3, name:"andres"},{id:4, name:"Diego"},{id:9, name:"andres"},{id:10, name:"Diego"},{id:5, name:"andres"},{id:6, name:"Diego"},{id:7, name:"andres"},{id:8, name:"Diego"}],
-        messages:[{id:1, align:"left", text:"aca", color:"black", background:"white"},{id:2, align:"right", text:"alla", color:"white", background:"purple"},
-        {id:3, align:"left", text:"aca", color:"black", background:"white"},{id:4, align:"right", text:"alla", color:"white", background:"purple"},
-        {id:5, align:"left", text:"aca", color:"black", background:"white"},{id:6, align:"right", text:"alla", color:"white", background:"purple"},
-        {id:7, align:"left", text:"aca", color:"black", background:"white"},{id:8, align:"right", text:"alla", color:"white", background:"purple"},
-        {id:9, align:"left", text:"aca", color:"black", background:"white"},{id:10, align:"right", text:"alla", color:"white", background:"purple"},
-        {id:11, align:"left", text:"aca", color:"black", background:"white"},{id:12, align:"right", text:"alla", color:"white", background:"purple"}],
-        form:{client:'', direction:'', sucursal:'', delivery:'', cellphone:'', value:0}
+        contacts:[{id:1, name:"andres"}],
+        messages:[{id:1, align:"left", text:"Buenas tardes", color:"black", background:"white"},{id:2, align:"right", text:"Buenas tardes señor andres que se le puede ofrecer", color:"white", background:"purple"},
+        {id:3, align:"left", text:"3 combos 5 por favor", color:"black", background:"white"},{id:4, align:"right", text:"se añadieron 3 combos 5", color:"white", background:"purple"},
+        {id:6, align:"right", text:"desea añadir una gaseosa?", color:"white", background:"purple"},
+        {id:7, align:"left", text:"no muchas gracias eso seria todo", color:"black", background:"white"},{id:8, align:"right", text:"en ese caso tendria un coste de 50000 pesos", color:"white", background:"purple"},
+        {id:9, align:"left", text:"listo, mi direccion es Cra 6A", color:"black", background:"white"},{id:10, align:"right", text:"listo su pedido ha sido realizado", color:"white", background:"purple"},
+        {id:11, align:"left", text:"muchas gracias", color:"black", background:"white"}],
+        form:{client:'andres', direction:'Cra 6A#41A-33', sucursal:'Victoria', delivery:'Combo #5 X3', cellphone:'+57 310 3589575', value:50000}
     }
 
     async get_last_pedido(contact){
@@ -125,6 +125,7 @@ class Chat extends React.Component{
                 alert("El numero dado no es correcto")
             }
         } catch (error){
+            this.setState({block:false, Qr:''})
         }
     }
 
@@ -197,8 +198,8 @@ class Chat extends React.Component{
     }
 
     componentDidMount(){
-        setInterval(()=>this.get_contacts(), 3000)
-        setInterval(()=>this.get_messages(this.state.contact), 3000)
+        //setInterval(()=>this.get_contacts(), 3000)
+        //setInterval(()=>this.get_messages(this.state.contact), 3000)
     }
 
     onChangemessage=evt=>{
@@ -254,7 +255,7 @@ class Chat extends React.Component{
                             <div className="Chat">
                                 <ul>
                                     {this.state.contacts.map(person => (
-                                        <li key={person.id}>
+                                        <li className="full" key={person.id}>
                                             <SetInfo person={person} update={this.update}/>
                                         </li>
                                         )
@@ -268,7 +269,7 @@ class Chat extends React.Component{
                             <div className="Chat">
                                 <ul>
                                     {this.state.messages.map(message => (
-                                        <li key={message.id}>
+                                        <li className="full" key={message.id}>
                                             <SetMessages message={message}/>
                                         </li>
                                         )
