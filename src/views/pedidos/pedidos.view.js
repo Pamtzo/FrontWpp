@@ -60,9 +60,6 @@ class Pedido extends React.Component{
             await response.json();
             this.get_info()
         } catch (error){
-            this.setState({
-                pedidos:[]
-            })
         }
     }
 
@@ -83,10 +80,6 @@ class Pedido extends React.Component{
                 alert("Usuario o contraseña incorrecto")
             }
           } catch (error){
-            this.setState({
-                block: false,
-                pedidos:[{id:1, name:'Andres Ospina', direction:'Cra 6A#41a-33', cellphone:'+57 310 3589575', delivery:'Combo #5 X3', value:50000}]
-            });
           }
     }
 

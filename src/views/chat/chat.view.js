@@ -125,7 +125,6 @@ class Chat extends React.Component{
                 alert("El numero dado no es correcto")
             }
         } catch (error){
-            this.setState({block:false, Qr:''})
         }
     }
 
