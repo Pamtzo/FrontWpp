@@ -142,8 +142,8 @@ class Chat extends React.Component{
                     messages:data.messages
                 });
             } catch (error){
-                //alert("Hubo un error inesperado, porfavor vuelva a escanear el Qr")
-                //this.setState({block:true})
+                alert("Hubo un error inesperado, porfavor vuelva a escanear el Qr")
+                this.setState({block:true})
             }
         }
     }
@@ -165,8 +165,8 @@ class Chat extends React.Component{
                     contacts:data.contacts
                 });
             } catch (error){
-                //alert("Hubo un error inesperado, porfavor vuelva a escanear el Qr")
-                //this.setState({block:true})
+                alert("Hubo un error inesperado, porfavor vuelva a escanear el Qr")
+                this.setState({block:true})
             }
         }
     }
@@ -192,14 +192,14 @@ class Chat extends React.Component{
             await response.json();
             this.get_messages(this.state.contact)
         } catch (error){
-            //alert("Hubo un error inesperado, porfavor vuelva a escanear el Qr")
-            //this.setState({block:true})
+            alert("Hubo un error inesperado, porfavor vuelva a escanear el Qr")
+            this.setState({block:true})
         }
     }
 
     componentDidMount(){
-        //setInterval(()=>this.get_contacts(), 3000)
-        //setInterval(()=>this.get_messages(this.state.contact), 3000)
+        setInterval(()=>this.get_contacts(), 3000)
+        setInterval(()=>this.get_messages(this.state.contact), 3000)
     }
 
     onChangemessage=evt=>{
@@ -234,8 +234,8 @@ class Chat extends React.Component{
             await response.json();
             this.get_contacts()
         } catch (error){
-            //alert("Hubo un error inesperado, porfavor vuelva a escanear el Qr")
-            //this.setState({block:true})
+            alert("Hubo un error inesperado, porfavor vuelva a escanear el Qr")
+            this.setState({block:true})
         }
     }
 

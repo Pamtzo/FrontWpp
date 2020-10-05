@@ -96,8 +96,8 @@ class Pedido extends React.Component{
             user:'',
             password:'',
             cellphone:'',
-            sucursal: ''/*,
-            pedidos:[]*/
+            sucursal: '',
+            pedidos:[]
         })
     }
 
@@ -121,7 +121,7 @@ class Pedido extends React.Component{
     }
 
     componentDidMount(){
-        //setInterval(()=>this.get_info(), 5000)
+        setInterval(()=>this.get_info(), 5000)
     }
 
     onChange= evt=>{
