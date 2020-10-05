@@ -45,7 +45,7 @@ class Pedido extends React.Component{
         password:'',
         cellphone:'',
         sucursal: '',
-        pedidos:[{id:1, name:'Andres Ospina', direction:'Cra 6A#41a-33', cellphone:'+57 310 3589575', delivery:'Combo #5 X3', value:50000}]
+        pedidos:[]
     }
 
     async sell(key, name){
