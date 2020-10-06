@@ -36,16 +36,22 @@ class Pedido extends React.Component{
         this.sell = this.sell.bind(this);
         this.get_info = this.get_info.bind(this);
         this.login = this.login.bind(this);
-        this.logout = this.logout.bind(this)
+        this.logout = this.logout.bind(this);
+        this.register = this.register.bind(this);
     }
 
     state={
         block:true,
+        isRegister:false,
         user:'',
         password:'',
         cellphone:'',
         sucursal: '',
-        pedidos:[]
+        pedidos:[],
+        Ruser:'',
+        Rpassword:'',
+        Rnumber:'',
+        Rsucursal:''
     }
 
     async sell(key, name){
@@ -80,10 +86,29 @@ class Pedido extends React.Component{
                 alert("Usuario o contraseña incorrecto")
             }
           } catch (error){
+          }
+    }
+
+    async register(){
+        try{
+            const response = await fetch(
+                `http://167.71.145.103/code/?code=4`,
+                {
+                    method: 'POST',
+                    body: JSON.stringify({form:{user:this.state.Ruser, password:this.state.Rpassword, cellphone:this.state.Rnumber, sucursal:this.state.Rsucursal}})
+                }
+            );
+            const data = await response.json();
+            console.log(data)
             this.setState({
-                block: false,
-                pedidos:[{id:1, name:'Andres Ospina', direction:'Cra 6A#41a-33', cellphone:'+57 310 3589575', delivery:'Combo #5 X3', value:50000}]
+                Rpassword:'',
+                isRegister:false,
+                Rnumber:'',
+                Rsucursal:'',
+                Ruser:''
             });
+            alert("Registro exitoso")
+          } catch (error){
           }
     }
 
@@ -113,6 +138,18 @@ class Pedido extends React.Component{
         }
     }
 
+    passLogin(){
+        this.setState({
+            isRegister: true
+        })
+    }
+
+    passRegister(){
+        this.setState({
+            isRegister:false
+        })
+    }
+
     onHandleChange = evt =>{
         this.setState({[evt.target.name]:evt.target.value})
     }
@@ -135,7 +172,7 @@ class Pedido extends React.Component{
                     </div>
                     <div className="Row">
                         <img src={logimg} alt="Logo2" className="Logimg"/>
-                        <div className="LogForm">
+                        {!this.state.isRegister && <div className="LogForm">
                             <div className="Tittle1">¡Bienvenido!<br/></div>
                             <div className="Sub1">Inicia sesión para empezar a recibir pedidos</div>
                             <div className="info">Usuario</div>
@@ -145,10 +182,31 @@ class Pedido extends React.Component{
                             <Button color="success" onClick={this.login} block={true} size="sm">
                                 <div className="dispatch" >INGRESAR</div>
                             </Button>
+                            <Button outline color="info" block={true} size="sm" onClick={()=>this.passLogin()}>
+                                <div className="dispatch Generate">REGISTRAR</div>
+                            </Button>
                             <div className="Title2">Ey!<br/></div>
                             <div className="SubLog2">¿Quieres usar nuestras herramientas?</div>
                             <div className="Title2 succ">¡Contactanos!<br/></div>
-                        </div>
+                        </div>}
+                        {this.state.isRegister && <div className="LogForm">
+                            <div className="Tittle1">¡Registro!<br/></div>
+                            <div className="Sub1">Llena el formulario para poder registrarte</div>
+                            <div className="info">Usuario</div>
+                            <Input className="data" placeholder="Ej. sayovictoria" name="Ruser" onChange={this.onChange}></Input>
+                            <div className="info">Numero</div>
+                            <Input className="data" placeholder="Ej. 3209874152" name="Rnumber" onChange={this.onChange}></Input>
+                            <div className="info">Nombre sucursal</div>
+                            <Input className="data" placeholder="Ej. victoria" name="Rsucursal" onChange={this.onChange}></Input>
+                            <div className="info">Contraseña</div>
+                            <Input className="data" type="password" name="Rpassword" onChange={this.onChange}></Input>
+                            <Button color="success" block={true} size="sm" onClick={this.register}>
+                                <div className="dispatch" >REGISTRAR</div>
+                            </Button>
+                            <Button outline color="info" block={true} size="sm"onClick={()=>this.passRegister()} >
+                                <div className="dispatch Generate">CANCELAR</div>
+                            </Button>
+                        </div>}
                     </div>
                 </div>}
                 {!this.state.block &&
